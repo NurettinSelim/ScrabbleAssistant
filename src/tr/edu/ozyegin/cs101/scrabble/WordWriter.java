@@ -15,7 +15,7 @@ public class WordWriter {
                 word.putScrabbleChar(scrabbleChars[charIndex], i);
                 scrabbleChars = deleteElementAtIndex(scrabbleChars, charIndex);
             } else if (jokerIndex > -1) {
-                word.putScrabbleChar(new ScrabbleChar('_'), i);
+                word.putScrabbleChar(new ScrabbleChar(Main.JOKER), i);
                 word.useJoker(searchingChar, i);
                 scrabbleChars = deleteElementAtIndex(scrabbleChars, jokerIndex);
             } else {
@@ -42,8 +42,7 @@ public class WordWriter {
 
         ScrabbleChar[] newArray = new ScrabbleChar[array.length - 1];
         System.arraycopy(array, 0, newArray, 0, indexToDelete);
-        if (newArray.length - indexToDelete >= 0)
-            System.arraycopy(array, indexToDelete + 1, newArray, indexToDelete, newArray.length - indexToDelete);
+        System.arraycopy(array, indexToDelete + 1, newArray, indexToDelete, newArray.length - indexToDelete);
         return newArray;
     }
 }
